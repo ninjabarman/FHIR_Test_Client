@@ -18,8 +18,8 @@ namespace FHIR_Test_Client.Services
         {
             var patients = new List<Patient>();
             int i = 1;
-            bool pastientsExist = true;
-            while(pastientsExist)
+            bool patientsExist = true;
+            while(patientsExist)
             {
                 try
                 {
@@ -29,7 +29,7 @@ namespace FHIR_Test_Client.Services
                 }
                 catch (Exception ex)
                 {
-                    pastientsExist = false;
+                    patientsExist = false;
                 }
             }
             return patients;

@@ -17,8 +17,8 @@ namespace FHIR_Test_Client.Services
         {
             var medications = new List<Medication>();
             int i = 1;
-            bool pastientsExist = true;
-            while (pastientsExist)
+            bool medicationsExist = true;
+            while (medicationsExist)
             {
                 try
                 {
@@ -28,7 +28,7 @@ namespace FHIR_Test_Client.Services
                 }
                 catch (Exception ex)
                 {
-                    pastientsExist = false;
+                    medicationsExist = false;
                 }
             }
             return medications;
