@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Configuration;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Model;
 
@@ -22,8 +22,9 @@ namespace FHIR_Test_Client.Services
             {
                 try
                 {
-                    var patient = _client.Read<Medication>(i.ToString());
-                    medications.Add(patient);
+                    string url = WebConfigurationManager.AppSettings["SparkServerURI"] + "/Medicaton/" + i.ToString();
+                    var medication = _client.Read<Medication>(url);
+                    medications.Add(medication);
                     i++;
                 }
                 catch (Exception ex)

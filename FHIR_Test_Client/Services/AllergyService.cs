@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Configuration;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Model;
 
@@ -22,7 +22,8 @@ namespace FHIR_Test_Client.Services
             {
                 try
                 {
-                    var patient = _client.Read<AllergyIntolerance>(i.ToString());
+                    string url = WebConfigurationManager.AppSettings["SparkServerURI"] + "/AllergyIntolerance/" + i.ToString();
+                    var patient = _client.Read<AllergyIntolerance>(url);
                     patients.Add(patient);
                     i++;
                 }

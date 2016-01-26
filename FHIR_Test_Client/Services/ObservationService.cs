@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Configuration;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
 
@@ -22,7 +22,8 @@ namespace FHIR_Test_Client.Services
             {
                 try
                 {
-                    var observation = _client.Read<Observation>(i.ToString());
+                    string url = WebConfigurationManager.AppSettings["SparkServerURI"] + "/Observation/" + i.ToString();
+                    var observation = _client.Read<Observation>(url);
                     observations.Add(observation);
                     i++;
                 }
